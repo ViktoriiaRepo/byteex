@@ -1,0 +1,34 @@
+.slider {
+  position: relative;
+  width: 310px; /* ширина контейнера */
+  height: 220px; /* висота контейнера */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  position: absolute;
+  transition: all 0.5s ease;
+  width: 110px;
+  height: 166px;
+  opacity: 0.8;
+}
+
+.center {
+  width: 136px;
+  height: 220px;
+  z-index: 2;
+  opacity: 1;
+}
+
+.left {
+  transform: translateX(-150px);
+  z-index: 1;
+}
+
+.right {
+  transform: translateX(150px);
+  z-index: 1;
+}
