@@ -1,0 +1,24 @@
+.product-images-slider-thumbs .swiper-slide {
+  cursor: pointer;
+}
+
+.product-images-slider-thumbs .swiper-slide-thumb-active {
+  border: 2px solid white;
+}
+
+.swiper-thumbs {
+  padding-inline: 47px;
+  top: -32px;
+
+  @media screen and (min-width: 1464px) {
+    padding-inline: 67px;
+    top: -50px;
+  }
+}
+
+.product-images-slider-thumbs-wrapper {
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  position: relative;
+}

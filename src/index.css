@@ -47,6 +47,7 @@
 @layer base {
   html {
     font-family: 'Sofia Pro', system-ui, sans-serif;
+    font-weight: 400;
   }
 }
 
@@ -54,4 +55,32 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.h2-header {
+  font-size: 26px;
+  line-height: 131%;
+  letter-spacing: 0.04em;
+  color: var(--accent-color);
+
+  @media (min-width: 1464px) {
+    font-size: 32px;
+    line-height: 125%;
+    letter-spacing: 0.04em;
+  }
+}
+
+.swiper-pagination-bullet {
+  background-color: #c4c4c4;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 7px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #000;
 }

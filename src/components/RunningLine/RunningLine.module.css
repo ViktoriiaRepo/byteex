@@ -1,0 +1,19 @@
+.sliderContainer {
+  @apply w-full h-[60px] relative;
+}
+
+.slider {
+  @apply flex;
+  width: 200%;
+
+  animation: slide 30s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

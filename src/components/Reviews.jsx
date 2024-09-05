@@ -1,5 +1,6 @@
 import avatar from '../assets/images/avatar.png';
-import yellowStar from '../assets/icons/yellow-star.svg';
+
+import Stars from './Stars';
 
 const Reviews = () => {
   return (
@@ -14,14 +15,7 @@ const Reviews = () => {
           Jane, S.
         </p>
         <div className='flex mr-[14px]'>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <img
-              key={index}
-              src={yellowStar}
-              alt='Star'
-              className='w-[11px] h-[10px] ml-[2px]'
-            />
-          ))}
+          <Stars />
         </div>
         <p className='text-[11px] tracking-[0.02em] font-secondary text-secondary-text-color'>
           One of 500+ 5 Star Reviews Online

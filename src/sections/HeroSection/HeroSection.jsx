@@ -1,11 +1,10 @@
-import FreeShippingBanner from '../FreeShippingBanner/FreeShippingBanner';
+import FreeShippingBanner from '../../components/FreeShippingBanner';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
-
-import Slider from '../Slider/Slider';
-import CustomizeOutfitButton from '../CustomizeOutfitButton';
-import Reviews from '../Reviews';
+import CustomizeOutfitButton from '../../components/CustomizeOutfitButton';
+import Reviews from '../../components/Reviews';
 import css from './HeroSection.module.css';
-import HeroList from '../HeroList';
+import HeroList from '../../components/HeroList';
+import SliderHero from '../../components/SliderHero';
 
 const HeroSection = () => {
   return (
@@ -32,7 +31,7 @@ const HeroSection = () => {
           </div>
 
           <div className='mt-[17px] md:desktop:mt-0 flex justify-center md:desktop:flex-shrink-0 md:desktop:w-[725px] md:desktop:h-auto md:desktop:flex md:desktop:justify-center md:desktop:items-center'>
-            <Slider />
+            <SliderHero />
           </div>
 
           <div className='flex flex-col gap-4 md:desktop:hidden  mt-[20px]'>

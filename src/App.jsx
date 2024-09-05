@@ -1,15 +1,15 @@
 import './App.css';
-import AboutUs from './components/AboutUs ';
 
 import ComfortMadeEasy from './components/ComfortMadeEasy';
 
 import FAQ from './components/FAQ';
 
 import GreenImpact from './components/GreenImpact ';
-import HeroSection from './components/HeroSection/HeroSection';
+import HeroSection from './sections/HeroSection/HeroSection';
 
 import StoreBrowseLink from './components/StoreBrowseLink';
-import TopBenefitSection from './components/TopBenefitSection/TopBenefitSection';
+import TopBenefitSection from './sections/TopBenefitSection/TopBenefitSection';
+import BestSelfSection from './sections/BestSelfSection/BestSelfSection';
 
 function App() {
   return (
@@ -18,7 +18,8 @@ function App() {
 
       <TopBenefitSection />
 
-      <AboutUs />
+      <BestSelfSection />
+
       <FAQ />
       <GreenImpact />
       <StoreBrowseLink />

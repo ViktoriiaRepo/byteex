@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 
-import img1 from '../../assets/images/image1.png';
-import img2 from '../../assets/images/image2.png';
-import img3 from '../../assets/images/image3.png';
-import img4 from '../../assets/images/image4.png';
-import img5 from '../../assets/images/image5.png';
+import img1 from '../assets/images/image1.png';
+import img2 from '../assets/images/image2.png';
+import img3 from '../assets/images/image3.png';
+import img4 from '../assets/images/image4.png';
+import img5 from '../assets/images/image5.png';
 
 const images = [img1, img2, img3, img4, img5];
 
 const gradient =
   'linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.7) 100%)';
 
-const Slider = () => {
+const SliderHero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -68,4 +68,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default SliderHero;
