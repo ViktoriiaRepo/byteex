@@ -10,6 +10,7 @@ import HeroSection from './sections/HeroSection/HeroSection';
 import StoreBrowseLink from './components/StoreBrowseLink';
 import TopBenefitSection from './sections/TopBenefitSection/TopBenefitSection';
 import BestSelfSection from './sections/BestSelfSection/BestSelfSection';
+import ComfortSection from './sections/ComfortSection/ComfortSection';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
       <TopBenefitSection />
 
       <BestSelfSection />
+
+      <ComfortSection />
 
       <FAQ />
       <GreenImpact />
