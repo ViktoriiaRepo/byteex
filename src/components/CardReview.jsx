@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Stars from './Stars';
 import avatar from '../assets/images/user.png';
 
@@ -26,6 +28,13 @@ const CardReview = ({ review }) => {
       </p>
     </div>
   );
+};
+
+CardReview.propTypes = {
+  review: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+  }),
 };
 
 export default CardReview;

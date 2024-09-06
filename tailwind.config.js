@@ -14,6 +14,7 @@ export default {
         'button-text-color': '#ffffff',
         'button-hover-color': '#03038c',
         'lines-color': 'rgba(196, 196, 196, 0.5)',
+        'border-color': '#eaeaea',
       },
       fontFamily: {
         primary: ['Sofia Pro', 'sans-serif'],

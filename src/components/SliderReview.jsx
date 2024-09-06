@@ -15,7 +15,7 @@ const SliderReview = () => {
   const nextRef = useRef(null);
 
   return (
-    <div className='relative w-full m-auto]'>
+    <div className='relative w-full m-auto'>
       <div
         ref={prevRef}
         className='swiper-button-prev-review absolute inset-y-2/4 -translate-y-1/2 z-10 cursor-pointer left-2'

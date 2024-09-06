@@ -1,25 +1,10 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import CustomizeOutfitButton from '../../components/CustomizeOutfitButton';
 import Stars from '../../components/Stars';
 
-const FAQItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className='border-b border-gray-200'>
-      <div className='flex justify-between items-center py-2'>
-        <span className='text-lg font-semibold'>{question}</span>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className='text-blue-500 hover:text-blue-700 focus:outline-none'
-        >
-          {isOpen ? '-' : '+'}
-        </button>
-      </div>
-      {isOpen && <p className='py-2'>{answer}</p>}
-    </div>
-  );
-};
+import FAQItem from '../../components/FAQItem';
+import GalleryLayout from '../../components/GalleryLayout';
 
 const FAQSection = () => {
   const faqs = [
@@ -47,25 +32,40 @@ const FAQSection = () => {
   ];
 
   return (
-    <>
-      <div className='max-w-2xl mx-auto px-4 py-8'>
-        {faqs.map((faq, index) => (
-          <FAQItem key={index} question={faq.question} answer={faq.answer} />
-        ))}
-      </div>
-      <div className='md:desktop:hidden flex flex-col items-center'>
-        <CustomizeOutfitButton />
+    <div
+      className={`px-horizontal-mobile md:desktop:px-horizontal-desktop mt-[68px] md:desktop:mt-[109px]  md:desktop:flex  md:desktop:justify-between`}
+    >
+      <div className='md:desktop:w-[60%]'>
+        <h2 className='h2-header text-center md:desktop:text-left'>
+          frequently asked questions.
+        </h2>
+        <div className='max-w-2xl md:desktop:max-w-3xl md:desktop:mx-0  mx-auto  py-8 '>
+          {faqs.map((faq, index) => (
+            <FAQItem key={index} question={faq.question} answer={faq.answer} />
+          ))}
+        </div>
+        <div className='md:desktop:hidden flex flex-col items-center'>
+          <CustomizeOutfitButton />
 
-        <div className='flex mt-[12px] items-center'>
-          <Stars />
+          <div className='flex mt-[12px] items-center'>
+            <Stars />
 
-          <p className='text-[11px] tracking-[0.02em] font-secondary text-secondary-text-color'>
-            Over 500+ 5 Star Reviews Online
-          </p>
+            <p className='text-[11px] tracking-[0.02em] font-secondary text-secondary-text-color'>
+              Over 500+ 5 Star Reviews Online
+            </p>
+          </div>
         </div>
       </div>
-    </>
+      <div className='hidden md:desktop:block'>
+        <GalleryLayout />
+      </div>
+    </div>
   );
+};
+
+FAQItem.propTypes = {
+  question: PropTypes.string.isRequired,
+  answer: PropTypes.string.isRequired,
 };
 
 export default FAQSection;

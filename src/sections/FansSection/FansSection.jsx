@@ -1,11 +1,12 @@
 import CustomizeOutfitButton from '../../components/CustomizeOutfitButton';
 import Gallery from '../../components/Gallery';
 import SliderReview from '../../components/SliderReview';
+import SliderReviewDesktop from '../../components/SliderReviewDesktop';
 import Stars from '../../components/Stars';
 
 const FansSection = () => {
   return (
-    <div className=' mt-[59px] text-center'>
+    <div className='mt-[59px] text-center'>
       <div className='px-horizontal-mobile md:px-horizontal-desktop'>
         <h2 className='h2-header'>What are our fans saying?</h2>
         <p className='text-[15px] leading-[153%] tracking-[0.03em] mt-4'>
@@ -23,7 +24,9 @@ const FansSection = () => {
         <SliderReview />
       </div>
 
-      <div className='md:px-horizontal-desktop hidden md:desktop:flex md:desktop:mt-[55px]'></div>
+      <div className='md:px-horizontal-desktop hidden md:desktop:flex md:desktop:mt-[55px]'>
+        <SliderReviewDesktop />
+      </div>
 
       <div className='flex flex-col items-center'>
         <CustomizeOutfitButton />
