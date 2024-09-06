@@ -1,4 +1,4 @@
-import { Card } from '../../components/Card';
+import { Card } from '../../components/CardComfortSlider';
 import CustomizeOutfitButton from '../../components/CustomizeOutfitButton';
 import SliderComfort from '../../components/SliderComfort';
 import Stars from '../../components/Stars';

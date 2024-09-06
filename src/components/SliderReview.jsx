@@ -3,28 +3,28 @@ import 'swiper/css';
 import 'swiper/css/effect-flip';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { EffectFlip, Navigation } from 'swiper/modules';
+import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
 import { ReactComponent as LeftArrowIcon } from '../assets/icons/left-arrow.svg';
 import { ReactComponent as RightArrowIcon } from '../assets/icons/right-arrow.svg';
-import { images } from '../sourses/imagesComfort';
-import { Card } from './CardComfortSlider';
+import { data } from '../sourses/reviewsData';
 import { useRef } from 'react';
+import CardReview from './CardReview';
 
-const SliderComfort = () => {
+const SliderReview = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
   return (
-    <div className='relative w-[380px] m-auto mt-[23px]'>
+    <div className='relative w-full m-auto]'>
       <div
         ref={prevRef}
-        className='swiper-button-prev-custom absolute inset-y-2/4 -translate-y-1/2 z-10 cursor-pointer left-6'
+        className='swiper-button-prev-review absolute inset-y-2/4 -translate-y-1/2 z-10 cursor-pointer left-2'
       >
         <LeftArrowIcon className='w-[7px] h-[14px]  md:desktop:w-[10px] md:desktop:h-[20px]' />
       </div>
       <div
         ref={nextRef}
-        className='swiper-button-next-custom absolute inset-y-2/4 -translate-y-1/2 z-10 cursor-pointer right-6'
+        className='swiper-button-next-review absolute inset-y-2/4 -translate-y-1/2 z-10 cursor-pointer right-2'
       >
         <RightArrowIcon className='w-[7px] h-[14px]  md:desktop:w-[10px] md:desktop:h-[20px]' />
       </div>
@@ -41,12 +41,12 @@ const SliderComfort = () => {
           swiper.params.navigation.nextEl = nextRef.current;
         }}
         loop={true}
-        modules={[EffectFlip, Navigation]}
-        className='w-[380px] h-[380px] p-[30px]'
+        modules={[EffectFlip, Pagination, Navigation]}
+        className='w-full h-[320px] p-[50px]'
       >
-        {images.map((image, index) => (
+        {data.map((review, index) => (
           <SwiperSlide key={index} className='flex justify-center items-center'>
-            <Card image={image} />
+            <CardReview review={review} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -54,4 +54,4 @@ const SliderComfort = () => {
   );
 };
 
-export default SliderComfort;
+export default SliderReview;

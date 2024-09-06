@@ -1,7 +1,5 @@
 import './App.css';
 
-import ComfortMadeEasy from './components/ComfortMadeEasy';
-
 import FAQ from './components/FAQ';
 
 import GreenImpact from './components/GreenImpact ';
@@ -11,6 +9,8 @@ import StoreBrowseLink from './components/StoreBrowseLink';
 import TopBenefitSection from './sections/TopBenefitSection/TopBenefitSection';
 import BestSelfSection from './sections/BestSelfSection/BestSelfSection';
 import ComfortSection from './sections/ComfortSection/ComfortSection';
+import FansSection from './sections/FansSection/FansSection';
+import FAQSection from './sections/FAQSection/FAQSection';
 
 function App() {
   return (
@@ -23,10 +23,13 @@ function App() {
 
       <ComfortSection />
 
+      <FansSection />
+
+      <FAQSection />
+
       <FAQ />
       <GreenImpact />
       <StoreBrowseLink />
-      <ComfortMadeEasy />
     </div>
   );
 }
