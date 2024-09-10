@@ -1,13 +1,13 @@
 import './App.css';
 
 import HeroSection from './sections/HeroSection/HeroSection';
-import StoreBrowseLink from './components/StoreBrowseLink';
 import TopBenefitSection from './sections/TopBenefitSection/TopBenefitSection';
 import BestSelfSection from './sections/BestSelfSection/BestSelfSection';
 import ComfortSection from './sections/ComfortSection/ComfortSection';
 import FansSection from './sections/FansSection/FansSection';
 import FAQSection from './sections/FAQSection/FAQSection';
 import GreenImpactSection from './sections/GreenImpactSection/GreenImpactSection';
+import FindSection from './sections/FindSection/FindSection';
 
 function App() {
   return (
@@ -25,7 +25,8 @@ function App() {
       <FAQSection />
 
       <GreenImpactSection />
-      <StoreBrowseLink />
+
+      <FindSection />
     </div>
   );
 }
