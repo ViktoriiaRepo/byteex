@@ -1,7 +1,7 @@
 import CustomizeOutfitButton from '../../components/CustomizeOutfitButton';
 import Gallery from '../../components/Gallery';
+
 import SliderReview from '../../components/SliderReview';
-import SliderReviewDesktop from '../../components/SliderReviewDesktop';
 import Stars from '../../components/Stars';
 
 const FansSection = () => {
@@ -20,12 +20,8 @@ const FansSection = () => {
         <Gallery />
       </div>
 
-      <div className='px-horizontal-mobile md:px-horizontal-desktop md:desktop:hidden'>
+      <div className='px-horizontal-mobile md:px-horizontal-desktop  md:desktop:flex mt-[55px]'>
         <SliderReview />
-      </div>
-
-      <div className='md:px-horizontal-desktop hidden md:desktop:flex md:desktop:mt-[55px]'>
-        <SliderReviewDesktop />
       </div>
 
       <div className='flex flex-col items-center'>
