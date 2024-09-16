@@ -23,7 +23,6 @@ const SliderLogotypes = () => {
       <Swiper
         spaceBetween={20}
         slidesPerView={3}
-        loop={true}
         pagination={{ clickable: true, el: '.swiper-pagination' }}
         modules={[Pagination]}
         className='mySwiper h-[34px] items-center justify-center'

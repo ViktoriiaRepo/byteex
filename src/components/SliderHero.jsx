@@ -1,28 +1,15 @@
-import { useEffect, useState } from 'react';
-
-import img1 from '../assets/images/image1.png';
-import img2 from '../assets/images/image2.png';
-import img3 from '../assets/images/image3.png';
-import img4 from '../assets/images/image4.png';
-import img5 from '../assets/images/image5.png';
-
-const images = [img1, img2, img3, img4, img5];
+import PropTypes from 'prop-types';
 
 const gradient =
   'linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.7) 100%)';
 
-const SliderHero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+const SliderHero = ({ slides, currentIndex }) => {
+  if (!slides || slides.length === 0) {
+    return <p>Loading...</p>;
+  }
 
   const getSlideClass = (index) => {
-    const position = (index - currentIndex + images.length) % images.length;
+    const position = (index - currentIndex + slides.length) % slides.length;
 
     switch (position) {
       case 0:
@@ -41,31 +28,58 @@ const SliderHero = () => {
   };
 
   const getSlideStyle = (index) => {
-    const position = (index - currentIndex + images.length) % images.length;
+    const position = (index - currentIndex + slides.length) % slides.length;
 
     if (position === 0 || position === 4) {
       return { backgroundImage: gradient, backgroundSize: 'cover' };
     } else {
       return {
-        backgroundImage: `url(${images[index]})`,
+        backgroundImage: `url(${slides[index].imageUrl})`,
         backgroundSize: 'cover',
       };
     }
   };
 
   return (
-    <div className='relative w-[310px] md:desktop:w-[750px] h-[220px] md:desktop:h-[422px] flex justify-center items-center overflow-hidden '>
-      {images.map((src, index) => (
-        <div
-          key={index}
-          style={getSlideStyle(index)}
-          className={`absolute transition-all duration-1000 border-solid border-2 ease-in-out border-white ${getSlideClass(
-            index
-          )} `}
-        />
-      ))}
-    </div>
+    <>
+      <div className='relative w-[310px] md:desktop:w-[750px] h-[220px] md:desktop:h-[422px] flex justify-center items-center overflow-hidden '>
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            style={getSlideStyle(index)}
+            className={`absolute transition-all duration-1000 border-solid border-2 ease-in-out border-white ${getSlideClass(
+              index
+            )} `}
+          />
+        ))}
+      </div>
+    </>
   );
+};
+
+SliderHero.propTypes = {
+  slides: PropTypes.arrayOf(
+    PropTypes.shape({
+      imageUrl: PropTypes.string.isRequired,
+      comments: PropTypes.arrayOf(
+        PropTypes.shape({
+          attributes: PropTypes.shape({
+            avatar: PropTypes.shape({
+              data: PropTypes.shape({
+                attributes: PropTypes.shape({
+                  url: PropTypes.string,
+                }),
+              }),
+            }),
+            author: PropTypes.string,
+            text: PropTypes.string,
+            rating: PropTypes.number,
+          }),
+        })
+      ),
+    })
+  ).isRequired,
+  currentIndex: PropTypes.number.isRequired,
 };
 
 export default SliderHero;

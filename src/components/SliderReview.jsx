@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-flip';
@@ -6,13 +7,15 @@ import 'swiper/css/navigation';
 import { EffectFlip, Pagination, Navigation } from 'swiper/modules';
 import { ReactComponent as LeftArrowIcon } from '../assets/icons/left-arrow.svg';
 import { ReactComponent as RightArrowIcon } from '../assets/icons/right-arrow.svg';
-import { data } from '../sourses/reviewsData';
+
 import { useRef } from 'react';
 import CardReview from './CardReview';
 
 const SliderReview = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const reviews = useSelector((state) => state.products.reviews);
 
   return (
     <div className='relative w-full m-auto'>
@@ -44,7 +47,7 @@ const SliderReview = () => {
         modules={[EffectFlip, Pagination, Navigation]}
         className='w-full h-[320px] p-[50px]'
       >
-        {data.map((review, index) => (
+        {reviews.map((review, index) => (
           <SwiperSlide key={index} className='flex justify-center items-center'>
             <CardReview review={review} />
           </SwiperSlide>

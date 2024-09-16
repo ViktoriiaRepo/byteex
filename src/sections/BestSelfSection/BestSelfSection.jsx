@@ -1,5 +1,3 @@
-// import SliderBestSelf from '../../components/SliderBestSelf';
-
 import img from '../../assets/images/best-images.png';
 import CustomizeOutfitButton from '../../components/CustomizeOutfitButton';
 
@@ -9,7 +7,6 @@ const BestSelfSection = () => {
       <h2 className='text-center text-[26px] md:desktop:hidden md:desktop:text-[32px] leading-[154%] md:desktop:leading-[125%] tracking-[0.04em] text-h2-best-self-color'>
         Be your best self.
       </h2>
-      {/* <SliderBestSelf /> */}
 
       <div className='flex flex-col md:desktop:mt-[83px] md:desktop:flex-row md:desktop:gap-[104px]'>
         <div className='mt-[30px] md:desktop:mt-0 shrink-0'>
@@ -25,7 +22,9 @@ const BestSelfSection = () => {
             Be your best self.
           </h2>
 
-          <p>Hi! My name’s [Insert Name], and I founded [Insert] in ____.</p>
+          <p>
+            Hi! My name’s Anna, and I founded this amasing White Robe in store.
+          </p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
             lobortis sapien facilisis tincidunt pellentesque. In eget ipsum et

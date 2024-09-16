@@ -1,11 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { useSelector } from 'react-redux';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { Navigation } from 'swiper/modules';
 
-import { data } from '../sourses/reviewsData';
 import CardReview from './CardReview';
 import { useRef } from 'react';
 
@@ -15,6 +16,8 @@ import { ReactComponent as RightArrowIcon } from '../assets/icons/right-arrow.sv
 const SliderReviewDesktop = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const reviews = useSelector((state) => state.products.reviews);
   return (
     <div className='relative w-full m-auto px-10'>
       <div
@@ -44,7 +47,7 @@ const SliderReviewDesktop = () => {
         modules={[Navigation]}
         className='mySwiper'
       >
-        {data.map((review, index) => (
+        {reviews.map((review, index) => (
           <SwiperSlide key={index} className='flex justify-center items-center'>
             <CardReview review={review} />
           </SwiperSlide>

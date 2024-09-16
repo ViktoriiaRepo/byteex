@@ -10,16 +10,25 @@ import { ReactComponent as LeftArrowIcon } from '../../assets/icons/left-arrow.s
 import { ReactComponent as RightArrowIcon } from '../../assets/icons/right-arrow.svg';
 
 import './SliderBenefits.css';
-import { images } from '../../sourses/imagesBenefit';
+import { useSelector } from 'react-redux';
 
 const SliderBenefits = () => {
+  const products = useSelector((state) => state.products.products);
   const [activeThumb, setActiveThumb] = useState(null);
-  const [description, setDescription] = useState(images[0].description);
+  const [productName, setProductName] = useState(
+    products[0]?.attributes?.productName || ''
+  );
+
+  const BASE_URL = 'http://localhost:1337';
 
   const handleSlideChange = (swiper) => {
     const activeIndex = swiper.realIndex;
-    setDescription(images[activeIndex].description);
+    setProductName(products[activeIndex]?.attributes?.productName || '');
   };
+
+  if (!products || products.length === 0) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
@@ -44,27 +53,33 @@ const SliderBenefits = () => {
         }}
         className='product-images-slider'
       >
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <img src={image.src} alt={image.alt} />
+        {products.map((product) => (
+          <SwiperSlide key={product.id}>
+            <img
+              src={
+                BASE_URL + product.attributes.images?.data[0]?.attributes.url
+              }
+              alt={product.attributes.productName}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
 
       <Swiper
         onSwiper={setActiveThumb}
-        loop={true}
         spaceBetween={7}
         slidesPerView={7}
         modules={[Navigation, Thumbs]}
         className='product-images-slider-thumbs'
       >
-        {images.map((image, index) => (
-          <SwiperSlide key={index}>
+        {products.map((product) => (
+          <SwiperSlide key={product.id}>
             <div className='product-images-slider-thumbs-wrapper'>
               <img
-                src={image.src}
-                alt={image.alt}
+                src={
+                  BASE_URL + product.attributes.images?.data[0]?.attributes.url
+                }
+                alt={product.attributes.productName}
                 className='absolute top-0 left-0 w-full'
               />
             </div>
@@ -72,8 +87,8 @@ const SliderBenefits = () => {
         ))}
       </Swiper>
 
-      <p className='font-secondary text-[13px] text-center mt-[-6px] tracking-[0.03em]'>
-        {description}
+      <p className='font-secondary text-[13px] text-center mt-[-16px] tracking-[0.03em]'>
+        {productName}
       </p>
     </>
   );

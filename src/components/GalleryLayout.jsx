@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import img1 from '../assets/images/swiper/image1.png';
-import img2 from '../assets/images/swiper/image6.png';
-import img3 from '../assets/images/swiper/image3.png';
+import { useSelector } from 'react-redux';
 
 const GalleryLayout = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const products = useSelector((state) => state.products.products);
+  const firstThreeProducts = useMemo(() => products.slice(0, 3), [products]);
+
+  const BASE_URL = 'http://localhost:1337';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,36 +46,49 @@ const GalleryLayout = () => {
   ];
   return (
     <div className='relative w-[430px] h-[645px]  '>
-      <div
-        className={positions[activeIndex].central}
-        style={{
-          backgroundImage: `url(${img1})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
+      {firstThreeProducts.length > 0 && (
+        <>
+          <div
+            className={positions[activeIndex].central}
+            style={{
+              backgroundImage: `url(${
+                BASE_URL +
+                firstThreeProducts[0].attributes.images?.data[0]?.attributes.url
+              })`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          ></div>
 
-      <div
-        className={positions[activeIndex].bottomLeft}
-        style={{
-          backgroundImage: `url(${img2})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
+          <div
+            className={positions[activeIndex].bottomLeft}
+            style={{
+              backgroundImage: `url(${
+                BASE_URL +
+                firstThreeProducts[1].attributes.images?.data[0]?.attributes.url
+              })`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          ></div>
 
-      <div
-        className={positions[activeIndex].topRight}
-        style={{
-          backgroundImage: `url(${img3})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      ></div>
+          <div
+            className={positions[activeIndex].topRight}
+            style={{
+              backgroundImage: `url(${
+                BASE_URL +
+                firstThreeProducts[2].attributes.images?.data[0]?.attributes.url
+              })`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          ></div>
+        </>
+      )}
 
-      <div className='absolute w-[134px] h-[189px] bottom-[70px] right-[50px] bg-basic-gradient z-0'></div>
+      <div className='absolute w-[134px] h-[189px] bottom-[70px] right-[50px] bg-basic-gradient z-[-1]'></div>
 
-      <div className='absolute w-[149px] h-[183px] top-[20px] left-[20px] bg-basic-gradient z-0'></div>
+      <div className='absolute w-[149px] h-[183px] top-[20px] left-[20px] bg-basic-gradient z-[-1]'></div>
     </div>
   );
 };
