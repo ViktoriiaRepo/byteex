@@ -48,7 +48,7 @@ const ProductDetail = () => {
       <div className='md:flex md:space-x-8'>
         <div className='md:w-1/3'>
           <img
-            src={`http://localhost:1337${product.attributes.images.data[0].attributes.url}`}
+            src={product.attributes.images.data[0].attributes.url}
             alt={product.attributes.productName}
             className='w-full h-auto object-cover rounded-lg shadow-lg'
           />

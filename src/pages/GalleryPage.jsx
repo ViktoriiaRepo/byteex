@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 import Stars from '../components/Stars';
-import { useEffect } from 'react';
+
 import { fetchProducts } from '../redux/productsSlice';
 
 const GalleryPage = () => {
@@ -34,7 +34,7 @@ const GalleryPage = () => {
           >
             <div className='relative w-full h-70'>
               <img
-                src={`http://localhost:1337${product.attributes.images.data[0].attributes.url}`}
+                src={product.attributes.images.data[0].attributes.url}
                 alt={product.attributes.productName}
                 className='w-full h-full object-cover'
               />

@@ -19,8 +19,6 @@ const SliderBenefits = () => {
     products[0]?.attributes?.productName || ''
   );
 
-  const BASE_URL = 'http://localhost:1337';
-
   const handleSlideChange = (swiper) => {
     const activeIndex = swiper.realIndex;
     setProductName(products[activeIndex]?.attributes?.productName || '');
@@ -56,9 +54,7 @@ const SliderBenefits = () => {
         {products.map((product) => (
           <SwiperSlide key={product.id}>
             <img
-              src={
-                BASE_URL + product.attributes.images?.data[0]?.attributes.url
-              }
+              src={product.attributes.images?.data[0]?.attributes.url}
               alt={product.attributes.productName}
             />
           </SwiperSlide>
@@ -76,9 +72,7 @@ const SliderBenefits = () => {
           <SwiperSlide key={product.id}>
             <div className='product-images-slider-thumbs-wrapper'>
               <img
-                src={
-                  BASE_URL + product.attributes.images?.data[0]?.attributes.url
-                }
+                src={product.attributes.images?.data[0]?.attributes.url}
                 alt={product.attributes.productName}
                 className='absolute top-0 left-0 w-full'
               />

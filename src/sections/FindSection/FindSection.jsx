@@ -11,13 +11,12 @@ const FindSection = () => {
   const [slides, setSlides] = useState([]);
 
   const products = useSelector((state) => state.products.products);
-  const BASE_URL = 'http://localhost:1337';
 
   useEffect(() => {
     if (products && products.length > 0) {
       const newSlides = products.flatMap((product) =>
-        product.attributes.images?.data.map((image) => ({
-          imageUrl: BASE_URL + image.attributes.url,
+        product.attributes.images.data.map((image) => ({
+          imageUrl: image.attributes.formats.small.url,
         }))
       );
 

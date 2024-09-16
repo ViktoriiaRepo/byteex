@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:1337/api/';
+axios.defaults.baseURL = import.meta.env.VITE_STRAPI_URL;
 
 export const getProducts = async () => {
   try {
     const response = await axios.get(
-      'products?populate[images][populate]=*&populate[comments][populate]=avatar'
+      `api/products?populate[images][populate]=*&populate[comments][populate]=avatar`
     );
 
     return response.data;

@@ -8,8 +8,6 @@ const GalleryLayout = () => {
   const products = useSelector((state) => state.products.products);
   const firstThreeProducts = useMemo(() => products.slice(0, 3), [products]);
 
-  const BASE_URL = 'http://localhost:1337';
-
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % 3);
@@ -51,10 +49,7 @@ const GalleryLayout = () => {
           <div
             className={positions[activeIndex].central}
             style={{
-              backgroundImage: `url(${
-                BASE_URL +
-                firstThreeProducts[0].attributes.images?.data[0]?.attributes.url
-              })`,
+              backgroundImage: `url(${firstThreeProducts[0].attributes.images?.data[0]?.attributes.url})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
@@ -63,10 +58,7 @@ const GalleryLayout = () => {
           <div
             className={positions[activeIndex].bottomLeft}
             style={{
-              backgroundImage: `url(${
-                BASE_URL +
-                firstThreeProducts[1].attributes.images?.data[0]?.attributes.url
-              })`,
+              backgroundImage: `url(${firstThreeProducts[1].attributes.images?.data[0]?.attributes.url})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
@@ -75,10 +67,7 @@ const GalleryLayout = () => {
           <div
             className={positions[activeIndex].topRight}
             style={{
-              backgroundImage: `url(${
-                BASE_URL +
-                firstThreeProducts[2].attributes.images?.data[0]?.attributes.url
-              })`,
+              backgroundImage: `url(${firstThreeProducts[2].attributes.images?.data[0]?.attributes.url})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}

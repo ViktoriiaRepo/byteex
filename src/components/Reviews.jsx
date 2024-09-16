@@ -12,7 +12,7 @@ const Reviews = ({ currentReview }) => {
           <img
             src={
               currentReview?.attributes.avatar?.data?.attributes?.url
-                ? `http://localhost:1337${currentReview.attributes.avatar.data.attributes.url}`
+                ? `${currentReview.attributes.avatar.data.attributes.url}`
                 : avatar
             }
             alt='Avatar'

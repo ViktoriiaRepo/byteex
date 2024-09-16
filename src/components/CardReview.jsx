@@ -10,7 +10,7 @@ const CardReview = ({ review }) => {
         <img
           src={
             review?.attributes.avatar?.data?.attributes?.url
-              ? `http://localhost:1337${review.attributes.avatar.data.attributes.url}`
+              ? `${review.attributes.avatar.data.attributes.url}`
               : avatar
           }
           alt='Avatar'

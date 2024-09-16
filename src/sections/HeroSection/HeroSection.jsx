@@ -17,8 +17,6 @@ const HeroSection = () => {
   const { products, status, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
-  const BASE_URL = 'http://localhost:1337';
-
   useEffect(() => {
     if (status === 'idle') {
       dispatch(fetchProducts());
@@ -29,7 +27,7 @@ const HeroSection = () => {
     if (products && products.length > 0) {
       const newSlides = products.flatMap((product) =>
         product.attributes.images?.data.map((image) => ({
-          imageUrl: BASE_URL + image.attributes.url,
+          imageUrl: image.attributes.url,
           comments: product.attributes.comments.data,
         }))
       );
