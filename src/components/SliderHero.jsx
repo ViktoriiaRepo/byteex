@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 
+import 'react-loading-skeleton/dist/skeleton.css';
+
 const gradient =
   'linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.7) 100%)';
 
-const SliderHero = ({ slides, currentIndex }) => {
-  if (!slides || slides.length === 0) {
-    return <p>Loading...</p>;
+const SliderHero = ({ slides, currentIndex, isLoading = true }) => {
+  if (isLoading) {
+    return <div className='loader'></div>;
   }
 
   const getSlideClass = (index) => {
@@ -13,15 +15,15 @@ const SliderHero = ({ slides, currentIndex }) => {
 
     switch (position) {
       case 0:
-        return 'absolute w-[70px]  md:desktop:w-[134px] h-[99px] md:desktop:h-[189px] transition-transform duration-1500 easy-in-out -translate-x-[155px] md:desktop:-translate-x-[305px] z-0 will-change-transform';
+        return 'absolute w-[70px]  md:desktop:w-[134px] h-[99px] md:desktop:h-[189px] transition-transform duration-1500 ease-in-out -translate-x-[155px] md:desktop:-translate-x-[305px] z-0 will-change-transform';
       case 1:
-        return 'absolute w-[110px] md:desktop:w-[209px] h-[166px] md:desktop:h-[316px] transition-all duration-[1500ms] easy-in-out transform translate-x-[-70px] md:desktop:translate-x-[-190px] opacity-80  z-10 will-change-transform';
+        return 'absolute w-[110px] md:desktop:w-[209px] h-[166px] md:desktop:h-[316px] transition-all duration-[1500ms] ease-in-out transform translate-x-[-70px] md:desktop:translate-x-[-190px] opacity-80 z-10 will-change-transform';
       case 2:
-        return 'absolute  w-[136px] md:desktop:w-[260px] h-[220px] md:desktop:h-[422px] transition-all duration-[1500ms] easy-in-out transform translate-x-[0] scale-[1] z-20 will-change-transform';
+        return 'absolute  w-[136px] md:desktop:w-[260px] h-[220px] md:desktop:h-[422px] transition-all duration-[1500ms] ease-in-out transform translate-x-[0] scale-[1] z-20 will-change-transform';
       case 3:
-        return 'absolute w-[110px] md:desktop:w-[209px] h-[166px] md:desktop:h-[316px] transition-transform duration-1500 easy-in-out translate-x-[70px] md:desktop:translate-x-[190px] opacity-80 z-10 will-change-transform';
+        return 'absolute w-[110px] md:desktop:w-[209px] h-[166px] md:desktop:h-[316px] transition-transform duration-1500 ease-in-out translate-x-[70px] md:desktop:translate-x-[190px] opacity-80 z-10 will-change-transform';
       case 4:
-        return 'absolute w-[70px] md:desktop:w-[134px] h-[99px] md:desktop:h-[189px] transition-transform duration-1500 easy-in-out translate-x-[155px] md:desktop:translate-x-[305px] z-0 will-change-transform';
+        return 'absolute w-[70px] md:desktop:w-[134px] h-[99px] md:desktop:h-[189px] transition-transform duration-1500 ease-in-out translate-x-[155px] md:desktop:translate-x-[305px] z-0 will-change-transform';
       default:
         return '';
     }
@@ -41,19 +43,17 @@ const SliderHero = ({ slides, currentIndex }) => {
   };
 
   return (
-    <>
-      <div className='relative w-[310px] md:desktop:w-[750px] h-[220px] md:desktop:h-[422px] flex justify-center items-center overflow-hidden '>
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            style={getSlideStyle(index)}
-            className={`absolute transition-all duration-1000 border-solid border-2 ease-in-out border-white ${getSlideClass(
-              index
-            )} `}
-          />
-        ))}
-      </div>
-    </>
+    <div className='relative w-[310px] md:desktop:w-[750px] h-[220px] md:desktop:h-[422px] flex justify-center items-center overflow-hidden'>
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          style={getSlideStyle(index)}
+          className={`absolute transition-all duration-1000 border-solid border-2 ease-in-out border-white ${getSlideClass(
+            index
+          )}`}
+        />
+      ))}
+    </div>
   );
 };
 
@@ -80,6 +80,7 @@ SliderHero.propTypes = {
     })
   ).isRequired,
   currentIndex: PropTypes.number.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default SliderHero;

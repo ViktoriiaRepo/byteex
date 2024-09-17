@@ -50,13 +50,11 @@ const HeroSection = () => {
   const currentReviewIndex = (currentIndex + 2) % slides.length;
   const currentReview = slides[currentReviewIndex]?.comments[0];
 
-  if (status === 'loading') {
-    return <div>Loading...</div>;
-  }
-
-  if (status === 'failed') {
+  if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const isLoading = status === 'loading';
 
   return (
     <>
@@ -68,9 +66,10 @@ const HeroSection = () => {
           <div className='flex flex-col items-center md:desktop:items-start md:desktop:w-[calc(100%-725px-94px)]'>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 1 }}
+              viewport={{ amount: 0.3 }}
             >
               <div className='flex justify-center md:desktop:justify-start items-center mt-[14px] md:desktop:mt-[33px]'>
                 <Logo className='w-[200px] h-[35px]' />
@@ -79,7 +78,7 @@ const HeroSection = () => {
 
             <motion.h2
               initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 1 }}
               className='mt-[14px] md:desktop:mt-[62px] md:desktop:text-[38px] text-h2custom text-accent-color text-center md:desktop:text-left'
@@ -90,12 +89,28 @@ const HeroSection = () => {
             <div className='hidden md:desktop:flex flex-col gap-4 mt-[20px] md:desktop:mt-[59px] md:desktop:w-full md:desktop:max-w-[414px]'>
               <HeroList />
               <CustomizeOutfitButton />
-              <Reviews currentReview={currentReview} />
+              <motion.div
+                key={reviewKey}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 1 }}
+              >
+                {isLoading ? (
+                  <div>Loading Reviews...</div>
+                ) : (
+                  <Reviews currentReview={currentReview} />
+                )}
+              </motion.div>
             </div>
           </div>
 
           <div className='mt-[17px] md:desktop:mt-0 flex justify-center md:desktop:flex-shrink-0 md:desktop:w-[725px] md:desktop:h-auto md:desktop:flex md:desktop:justify-center md:desktop:items-center'>
-            <SliderHero slides={slides} currentIndex={currentIndex} />
+            <SliderHero
+              slides={slides}
+              currentIndex={currentIndex}
+              isLoading={isLoading}
+            />
           </div>
 
           <div className='flex flex-col gap-4 md:desktop:hidden mt-[20px]'>
@@ -108,7 +123,11 @@ const HeroSection = () => {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 1 }}
             >
-              <Reviews currentReview={currentReview} />
+              {isLoading ? (
+                <div>Loading Reviews...</div>
+              ) : (
+                <Reviews currentReview={currentReview} />
+              )}
             </motion.div>
           </div>
         </div>

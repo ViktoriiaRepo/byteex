@@ -34,6 +34,7 @@ const productsSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
+        console.log('Products Fulfilled:', action.payload);
         state.status = 'succeeded';
         state.products = action.payload.data;
         state.reviews = action.payload.data.flatMap(

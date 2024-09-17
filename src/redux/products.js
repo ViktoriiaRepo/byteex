@@ -11,7 +11,7 @@ export const getProducts = async () => {
     return response.data;
   } catch (error) {
     console.log('Error fetching products', error);
-    return [];
+    return { data: [] };
   }
 };
 
