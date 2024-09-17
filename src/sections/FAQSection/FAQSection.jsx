@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 import CustomizeOutfitButton from '../../components/CustomizeOutfitButton';
 import Stars from '../../components/Stars';
@@ -31,29 +32,59 @@ const FAQSection = () => {
     },
   ];
 
+  const faqItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <div
       className={`px-horizontal-mobile md:desktop:px-horizontal-desktop mt-[68px] md:desktop:mt-[109px]  md:desktop:flex  md:desktop:justify-between`}
     >
       <div className='md:desktop:w-[60%]'>
-        <h2 className='h2-header text-center md:desktop:text-left'>
+        <motion.h2
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 50 }}
+          transition={{ duration: 0.5 }}
+          className='h2-header text-center md:desktop:text-left'
+        >
           frequently asked questions.
-        </h2>
-        <div className='max-w-2xl md:desktop:max-w-3xl md:desktop:mx-0  mx-auto  py-8 '>
+        </motion.h2>
+
+        <motion.div
+          className='max-w-2xl md:desktop:max-w-3xl md:desktop:mx-0 mx-auto py-8'
+          initial='hidden'
+          whileInView='visible'
+          transition={{ staggerChildren: 0.3 }}
+        >
           {faqs.map((faq, index) => (
-            <FAQItem key={index} question={faq.question} answer={faq.answer} />
+            <motion.div
+              key={index}
+              variants={faqItemVariants}
+              transition={{ duration: 0.5 }}
+            >
+              <FAQItem question={faq.question} answer={faq.answer} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         <div className='md:desktop:hidden flex flex-col items-center'>
           <CustomizeOutfitButton />
 
-          <div className='flex mt-[12px] items-center'>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            viewport={{ amount: 0.3 }}
+            className='flex mt-[12px] items-center'
+          >
             <Stars />
 
             <p className='text-[11px] tracking-[0.02em] font-secondary text-secondary-text-color'>
               Over 500+ 5 Star Reviews Online
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className='hidden md:desktop:block'>

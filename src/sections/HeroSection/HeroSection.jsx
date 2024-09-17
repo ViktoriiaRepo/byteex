@@ -68,7 +68,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.5 }}
               viewport={{ amount: 0.3 }}
             >
               <div className='flex justify-center md:desktop:justify-start items-center mt-[14px] md:desktop:mt-[33px]'>
@@ -80,7 +80,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.5 }}
               className='mt-[14px] md:desktop:mt-[62px] md:desktop:text-[38px] text-h2custom text-accent-color text-center md:desktop:text-left'
             >
               Don’t apologize for being comfortable.
@@ -94,7 +94,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.5 }}
               >
                 {isLoading ? (
                   <div>Loading Reviews...</div>
@@ -121,7 +121,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.5 }}
             >
               {isLoading ? (
                 <div>Loading Reviews...</div>

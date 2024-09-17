@@ -63,7 +63,7 @@ const TopBenefitSection = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.5 }}
               className='h2-header hidden md:desktop:block'
             >
               Loungewear you can be proud of.
@@ -105,13 +105,20 @@ const TopBenefitSection = () => {
         <div className='md:desktop:hidden flex flex-col items-center'>
           <CustomizeOutfitButton />
 
-          <div className='flex mt-[12px] items-center'>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            viewport={{ amount: 0.3 }}
+            className='flex mt-[12px] items-center'
+          >
             <Stars />
 
             <p className='text-[11px] tracking-[0.02em] font-secondary text-secondary-text-color'>
               Over 500+ 5 Star Reviews Online
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

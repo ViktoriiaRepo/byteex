@@ -13,7 +13,7 @@ const CustomizeOutfitButton = () => {
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
-      transition={{ duration: 1, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
       viewport={{ amount: 0.3 }}
       className='mt-[28px] md:desktop:mt-[59px] flex justify-center md:desktop:justify-start'
     >

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -29,7 +30,13 @@ const SliderBenefits = () => {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ amount: 0.3 }}
+    >
       <div className='swiper-button-prev-custom absolute inset-y-2/4 -translate-y-1/2 z-10 cursor-pointer left-[-30px]'>
         <LeftArrowIcon className='w-[7px] h-[14px]  md:desktop:w-[10px] md:desktop:h-[20px]' />
       </div>
@@ -84,7 +91,7 @@ const SliderBenefits = () => {
       <p className='font-secondary text-[13px] text-center mt-[-16px] tracking-[0.03em]'>
         {productName}
       </p>
-    </>
+    </motion.div>
   );
 };
 

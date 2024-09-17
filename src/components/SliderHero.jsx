@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 const gradient =
   'linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.7) 100%)';
@@ -41,7 +42,14 @@ const SliderHero = ({ slides, currentIndex, isLoading = true }) => {
   };
 
   return (
-    <div className='relative w-[310px] md:desktop:w-[750px] h-[220px] md:desktop:h-[422px] flex justify-center items-center overflow-hidden'>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ amount: 0.3 }}
+      className='relative w-[310px] md:desktop:w-[750px] h-[220px] md:desktop:h-[422px] flex justify-center items-center overflow-hidden'
+    >
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -51,7 +59,7 @@ const SliderHero = ({ slides, currentIndex, isLoading = true }) => {
           )}`}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };
 
