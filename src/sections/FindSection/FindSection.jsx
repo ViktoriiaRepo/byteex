@@ -32,6 +32,8 @@ const FindSection = () => {
     return () => clearInterval(interval);
   }, [slides.length]);
 
+  const isLoading = status === 'loading';
+
   return (
     <div className='px-horizontal-mobile md:px-horizontal-desktop py-[52px] text-center bg-footer-gradient'>
       <h2 className='h2-header text-center'>Find something you love</h2>
@@ -45,7 +47,11 @@ const FindSection = () => {
         consequat.
       </p>
       <div className='mt-[40px] flex justify-center'>
-        <SliderHero slides={slides} currentIndex={currentIndex} />
+        <SliderHero
+          slides={slides}
+          currentIndex={currentIndex}
+          isLoading={isLoading}
+        />
       </div>
 
       <div className='flex justify-center'>

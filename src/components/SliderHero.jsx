@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 
-import 'react-loading-skeleton/dist/skeleton.css';
-
 const gradient =
   'linear-gradient(180deg, rgba(249, 240, 229, 0.7) 0%, rgba(249, 240, 229, 0.7) 100%)';
 
